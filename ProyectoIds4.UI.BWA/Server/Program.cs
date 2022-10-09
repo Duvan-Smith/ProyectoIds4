@@ -1,5 +1,3 @@
-using ProyectoIds4.AppCore.Base.Cofiguration;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -24,13 +22,6 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
-builder.Services.ConfigureAplicacionCore();
-
-//builder.Services.AddHttpClient<IIdentityServer4Service, IdentityServer4Service>(client =>
-//{
-//    client.BaseAddress = new Uri("https://localhost:7245/");
-//});
 
 var app = builder.Build();
 
