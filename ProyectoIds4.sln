@@ -15,15 +15,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Infraestructura", "5.Infr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Ids", "6.Ids", "{B24A4583-F03F-4A51-ACE6-D888133A766D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.Empty.IdentityServer4AspNet", "ProyectoIds4.Empty.IdentityServer4\ProyectoIds4.Empty.IdentityServer4AspNet.csproj", "{594D58FA-44B8-4CF2-9D15-5891C1AE97D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.Empty.IdentityServer4AspNet", "ProyectoIds4.Empty.IdentityServer4\ProyectoIds4.Empty.IdentityServer4AspNet.csproj", "{594D58FA-44B8-4CF2-9D15-5891C1AE97D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.WebApi", "ProyectoIds4.WebApi\ProyectoIds4.WebApi.csproj", "{2B94B3BC-C608-4BF9-ABA2-8829E30B5B89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.WebApi", "ProyectoIds4.WebApi\ProyectoIds4.WebApi.csproj", "{2B94B3BC-C608-4BF9-ABA2-8829E30B5B89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.UI.BWA.Server", "ProyectoIds4.UI.BWA\Server\ProyectoIds4.UI.BWA.Server.csproj", "{6CF0D345-E017-441D-8FD1-1F39FEE4E27E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.UI.BWA.Server", "ProyectoIds4.UI.BWA\Server\ProyectoIds4.UI.BWA.Server.csproj", "{6CF0D345-E017-441D-8FD1-1F39FEE4E27E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.UI.BWA.Client", "ProyectoIds4.UI.BWA\Client\ProyectoIds4.UI.BWA.Client.csproj", "{9E46E14E-D202-4F78-AA49-1AC3CF73502A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.UI.BWA.Client", "ProyectoIds4.UI.BWA\Client\ProyectoIds4.UI.BWA.Client.csproj", "{9E46E14E-D202-4F78-AA49-1AC3CF73502A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.UI.BWA.Shared", "ProyectoIds4.UI.BWA\Shared\ProyectoIds4.UI.BWA.Shared.csproj", "{BA8A274D-BA69-4598-91AB-A3341B5915CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.UI.BWA.Shared", "ProyectoIds4.UI.BWA\Shared\ProyectoIds4.UI.BWA.Shared.csproj", "{BA8A274D-BA69-4598-91AB-A3341B5915CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.Dto", "ProyectoIds4.Dto\ProyectoIds4.Dto.csproj", "{795EDC40-7521-4A07-B3A8-91B5C8F34B42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{BA8A274D-BA69-4598-91AB-A3341B5915CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA8A274D-BA69-4598-91AB-A3341B5915CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA8A274D-BA69-4598-91AB-A3341B5915CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{795EDC40-7521-4A07-B3A8-91B5C8F34B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{795EDC40-7521-4A07-B3A8-91B5C8F34B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{795EDC40-7521-4A07-B3A8-91B5C8F34B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{795EDC40-7521-4A07-B3A8-91B5C8F34B42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{6CF0D345-E017-441D-8FD1-1F39FEE4E27E} = {F659098C-6F61-4E93-934D-4406F431ED16}
 		{9E46E14E-D202-4F78-AA49-1AC3CF73502A} = {F659098C-6F61-4E93-934D-4406F431ED16}
 		{BA8A274D-BA69-4598-91AB-A3341B5915CC} = {F659098C-6F61-4E93-934D-4406F431ED16}
+		{795EDC40-7521-4A07-B3A8-91B5C8F34B42} = {44D67036-627B-4C2E-AABE-15DBF7CF775D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5035762-9D89-4616-B107-8336345B95A2}
