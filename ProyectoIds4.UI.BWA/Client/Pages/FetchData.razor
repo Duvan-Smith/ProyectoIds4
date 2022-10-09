@@ -43,5 +43,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
+        //TODO: Duvan, Se muestra la Url conexion por consola, agregar al inicio o a un boton.
     }
 }

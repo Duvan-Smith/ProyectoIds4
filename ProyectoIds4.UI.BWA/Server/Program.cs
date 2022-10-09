@@ -1,8 +1,24 @@
-using Microsoft.AspNetCore.ResponseCompression;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "cookie";
+    options.DefaultChallengeScheme = "oidc";
+})
+    .AddCookie("cookie")
+    .AddOpenIdConnect("oidc", options =>
+    {
+        options.Authority = "https://localhost:7164";
+        options.ClientId = "oidcMVCApp";
+        options.ClientSecret = "ProCodeGuide";
+        options.ResponseType = "code";
+        options.UsePkce = true;
+        options.ResponseMode = "query";
+        options.Scope.Add("weatherApi.read");
+        options.SaveTokens = true;
+    });
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -28,6 +44,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
