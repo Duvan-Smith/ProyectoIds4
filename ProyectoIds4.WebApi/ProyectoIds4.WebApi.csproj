@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProyectoIds4.Dto\ProyectoIds4.Dto.csproj" />
+    <ProjectReference Include="..\ProyectoIds4.AppCore\ProyectoIds4.AppCore.csproj" />
   </ItemGroup>
 
 </Project>
