@@ -1,4 +1,4 @@
-using ProyectoIds4.Empty.IdentityServer4.IdentityConfiguration;
+using ProyectoIds4.Empty.IdentityServer4AspNet.IdentityConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +20,7 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 app.UseIdentityServer();
+app.UseAuthorization();
 app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 
 app.Run();

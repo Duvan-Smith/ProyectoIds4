@@ -1,7 +1,7 @@
 ﻿using IdentityServer4;
 using IdentityServer4.Models;
 
-namespace ProyectoIds4.Empty.IdentityServer4.IdentityConfiguration;
+namespace ProyectoIds4.Empty.IdentityServer4AspNet.IdentityConfiguration;
 
 public static class Clients
 {

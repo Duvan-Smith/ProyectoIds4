@@ -1,4 +1,4 @@
-﻿@model ScopeViewModel
+﻿@model ProyectoIds4.Empty.IdentityServer4AspNet.Quickstart.Consent.ScopeViewModel
 
 <li class="list-group-item">
     <label>
@@ -12,8 +12,8 @@
         @if (Model.Required)
         {
             <input type="hidden"
-                   name="ScopesConsented"
-                   value="@Model.Value" />
+               name="ScopesConsented"
+               value="@Model.Value" />
         }
         <strong>@Model.DisplayName</strong>
         @if (Model.Emphasize)

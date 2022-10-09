@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Infraestructura", "5.Infr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.Ids", "6.Ids", "{B24A4583-F03F-4A51-ACE6-D888133A766D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.Empty.IdentityServer4", "ProyectoIds4.Empty.IdentityServer4\ProyectoIds4.Empty.IdentityServer4.csproj", "{594D58FA-44B8-4CF2-9D15-5891C1AE97D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.Empty.IdentityServer4AspNet", "ProyectoIds4.Empty.IdentityServer4\ProyectoIds4.Empty.IdentityServer4AspNet.csproj", "{594D58FA-44B8-4CF2-9D15-5891C1AE97D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

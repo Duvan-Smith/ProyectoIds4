@@ -1,4 +1,4 @@
-@model LoginViewModel
+@model ProyectoIds4.Empty.IdentityServer4AspNet.Quickstart.Account.LoginViewModel
 
 <div class="login-page">
     <div class="lead">
@@ -62,10 +62,10 @@
                             {
                                 <li class="list-inline-item">
                                     <a class="btn btn-secondary"
-                                       asp-controller="External"
-                                       asp-action="Challenge"
-                                       asp-route-scheme="@provider.AuthenticationScheme"
-                                       asp-route-returnUrl="@Model.ReturnUrl">
+                               asp-controller="External"
+                               asp-action="Challenge"
+                               asp-route-scheme="@provider.AuthenticationScheme"
+                               asp-route-returnUrl="@Model.ReturnUrl">
                                         @provider.DisplayName
                                     </a>
                                 </li>

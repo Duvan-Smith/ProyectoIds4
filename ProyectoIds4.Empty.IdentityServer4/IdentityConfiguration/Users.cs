@@ -2,7 +2,7 @@
 using IdentityServer4.Test;
 using System.Security.Claims;
 
-namespace ProyectoIds4.Empty.IdentityServer4.IdentityConfiguration;
+namespace ProyectoIds4.Empty.IdentityServer4AspNet.IdentityConfiguration;
 
 public static class Users
 {
