@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.Dto", "Proyect
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.AppCore", "ProyectoIds4.AppCore\ProyectoIds4.AppCore.csproj", "{B310C1C3-18BE-4CB5-8769-199BF2831033}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.WebApi.Client", "ProyectoIds4.WebApi.Client\ProyectoIds4.WebApi.Client.csproj", "{27DD0F16-4C4B-4445-A84C-373C106567EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.WebApi.Client", "ProyectoIds4.WebApi.Client\ProyectoIds4.WebApi.Client.csproj", "{27DD0F16-4C4B-4445-A84C-373C106567EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
