@@ -24,7 +24,11 @@ public static class Clients
                 ClientSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256())},
 
                 AllowedGrantTypes = GrantTypes.Code,
-                RedirectUris = new List<string> {"https://localhost:7167/signin-oidc"},
+                RedirectUris = new List<string> {
+                    "https://localhost:7167/index.html",
+                    "https://localhost:7167/signin-oidc",
+                    "https://localhost:7167/oauth2-redirect.html",
+                },
                 AllowedScopes = new List<string>
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
