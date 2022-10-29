@@ -1,7 +1,5 @@
-using IdentityModel.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProyectoIds4.AppCore.IdentityServer4;
 using ProyectoIds4.Dto;
 
 namespace ProyectoIds4.WebApi.Controllers;
@@ -17,19 +15,11 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
-    private readonly IIdentityServer4Service _identityServer4Service;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger, IIdentityServer4Service identityServer4Service)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger
+        )
     {
         _logger = logger;
-        _identityServer4Service = identityServer4Service;
-    }
-
-    [AllowAnonymous]
-    [HttpGet(nameof(GetToken))]
-    public async Task<TokenResponse> GetToken()
-    {
-        return await _identityServer4Service.GetToken("weatherApi.read").ConfigureAwait(false);
     }
 
     [HttpGet(Name = "GetWeatherForecast")]

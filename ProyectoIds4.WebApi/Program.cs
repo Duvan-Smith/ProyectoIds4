@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using ProyectoIds4.AppCore.IdentityServer4;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,31 +8,57 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-.AddIdentityServerAuthentication("Bearer", options =>
+#region AddSwaggerGen
+builder.Services.AddSwaggerGen(swa =>
 {
-    options.ApiName = "weatherApi";
-    options.Authority = "https://localhost:7164";
-});
+    swa.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "'Bearer' + token",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
 
-builder.Services.ConfigureIdentityServer4Services();
+    swa.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+               Reference=new OpenApiReference
+               {
+                Type= ReferenceType.SecurityScheme,
+                   Id="Bearer"
+               },
+               Scheme="oauth2",
+               Name="Bearer",
+               In=ParameterLocation.Header,
+            },
+            new List<string>()
+        }
+    });
+});
+#endregion AddSwaggerGen
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(opt =>
+{
+    opt.Authority = "https://localhost:7164";
+    opt.Audience = "weatherApi";
+    opt.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    //app.UseSwaggerUI(c => c.SwaggerEndpoint("https://procodeguide.b-cdn.net/swagger/v1/swagger.json", "ProCodeGuide.IdServer4.WebAPI v1"));
-    app.UseSwaggerUI(options =>
-    {
-        options.OAuth2RedirectUrl("https://localhost:7164/oauth2-redirect.html");
-    });
+    app.UseSwaggerUI();
 }
+
 app.UseHttpsRedirection();
-app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
