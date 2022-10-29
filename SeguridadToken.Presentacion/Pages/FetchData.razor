@@ -1,11 +1,10 @@
-﻿@page "/fetchdataids"
+﻿@page "/fetchdata"
+@attribute [Authorize]
 
 <PageTitle>Weather forecast</PageTitle>
 
-@using ProyectoIds4.Dto
-@*@using ProyectoIds4.UI.BWA.Client.WeatherForecastService*@
-@*@inject IWeatherForecastService ForecastService*@
-@inject HttpClient Http
+@using SeguridadToken.Presentacion.WeatherForecast
+@inject IWeatherForecastService ForecastService
 
 <h1>Weather forecast</h1>
 
@@ -41,13 +40,10 @@ else
 }
 
 @code {
-    private WeatherForecastDto[]? forecasts;
+    private IEnumerable<WeatherForecastDto>? forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        //forecasts = await ForecastService.GetWeatherForecast();
-        //forecasts = await Http.GetFromJsonAsync<WeatherForecastDto[]>("WeatherForecastIds");
-        forecasts = await Http.GetFromJsonAsync<WeatherForecastDto[]>("WeatherForecastIds/GetIds");
-        //TODO: Duvan, Se muestra la Url conexion por consola, agregar al inicio o a un boton.
+        forecasts = await ForecastService.GetWeatherForecast();
     }
 }

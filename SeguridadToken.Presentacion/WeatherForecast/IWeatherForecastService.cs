@@ -1,6 +1,6 @@
 ﻿using ProyectoIds4.Dto;
 
-namespace ProyectoIds4.UI.BWA.Client.WeatherForecastService;
+namespace SeguridadToken.Presentacion.WeatherForecast;
 
 public interface IWeatherForecastService
 {

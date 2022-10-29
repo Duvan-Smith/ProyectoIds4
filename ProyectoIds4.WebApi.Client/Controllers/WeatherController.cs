@@ -16,7 +16,7 @@ public class WeatherController : ControllerBase
         _identityServer4Service = identityServer4Service;
     }
     [HttpGet]
-    public async Task<IEnumerable<WeatherForecast>> Get()
+    public async Task<IEnumerable<WeatherForecastDto>> Get()
     {
         var OAuth2Token = await _identityServer4Service.GetToken("weatherApi.read");
         using (var client = new HttpClient())
@@ -26,7 +26,7 @@ public class WeatherController : ControllerBase
             if (result.IsSuccessStatusCode)
             {
                 var model = await result.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<WeatherForecast>>(model);
+                return JsonConvert.DeserializeObject<List<WeatherForecastDto>>(model);
             }
             else
             {

@@ -1,7 +1,8 @@
-﻿using ProyectoIds4.Dto;
-using System.Net.Http.Json;
+﻿using Newtonsoft.Json;
+using ProyectoIds4.Dto;
+using System.Net.Http.Headers;
 
-namespace ProyectoIds4.UI.BWA.Client.WeatherForecastService;
+namespace SeguridadToken.Presentacion.WeatherForecast;
 
 public class WeatherForecastService : IWeatherForecastService
 {
@@ -13,10 +14,13 @@ public class WeatherForecastService : IWeatherForecastService
         _httpClient = httpClient;
         _logger = logger;
     }
-
     public async Task<IEnumerable<WeatherForecastDto>> GetWeatherForecast()
     {
-        var weatherForecast = await _httpClient.GetFromJsonAsync<WeatherForecastDto[]>("WeatherForecastIds");
+        var token = Environment.GetEnvironmentVariable("token");
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        var response = await _httpClient.GetAsync("/WeatherForecastDto");
+
+        var weatherForecast = JsonConvert.DeserializeObject<IEnumerable<WeatherForecastDto>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
 
         if (weatherForecast == null)
             _logger.LogError("Error" + "IEnumerable<WeatherForecastDto> null");
