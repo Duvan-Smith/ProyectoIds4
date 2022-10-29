@@ -16,10 +16,10 @@ builder.Services.AddAuthentication(options =>
         options.Authority = "https://localhost:7164";
         options.ClientId = "oidcMVCApp";
         options.ClientSecret = "ProCodeGuide";
+        options.Scope.Add("weatherApi.read");
         options.ResponseType = "code";
         options.UsePkce = true;
         options.ResponseMode = "query";
-        options.Scope.Add("weatherApi.read");
         options.SaveTokens = true;
     });
 

@@ -1,5 +1,4 @@
-
-
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoIds4.AppCore.IdentityServer4;
@@ -34,6 +33,26 @@ public class WeatherForecastIdsController : ControllerBase
         var weatherForecast = await _weatherForecastClientHttp.Get(OAuth2Token.AccessToken).ConfigureAwait(false);
         if (weatherForecast == null)
             _logger.LogError("Error" + "IEnumerable<WeatherForecast> null");
+
+        return weatherForecast;
+    }
+
+    [HttpGet(nameof(GetIds))]
+    [Authorize]
+    public async Task<IEnumerable<WeatherForecast>> GetIds()
+    {
+        var token = await HttpContext.GetTokenAsync("access_token");
+
+        var weatherForecast = await _weatherForecastClientHttp.Get(token).ConfigureAwait(false);
+        if (weatherForecast == null)
+            _logger.LogError("Error" + "IEnumerable<WeatherForecast> null");
+        //using var _client = new HttpClient();
+
+        //var token = await HttpContext.GetTokenAsync("access_token");
+
+        //_client.SetBearerToken(token);
+
+        //var weatherForecast = await _client.GetFromJsonAsync<WeatherForecast[]>("weatherforecast");
 
         return weatherForecast;
     }
