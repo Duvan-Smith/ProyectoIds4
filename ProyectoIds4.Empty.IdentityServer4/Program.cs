@@ -16,8 +16,6 @@ builder.Services.AddIdentityServer(options =>
     options.Events.RaiseInformationEvents = true;
     options.Events.RaiseFailureEvents = true;
     options.Events.RaiseSuccessEvents = true;
-    //options.UserInteraction.LoginUrl = "/Identity/Account/Login";
-    //options.UserInteraction.LogoutUrl = "/Identity/Account/Logout";
 })
 .AddInMemoryClients(Clients.Get())
 .AddInMemoryIdentityResources(Resources.GetIdentityResources())
