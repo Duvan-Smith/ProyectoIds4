@@ -1,6 +1,6 @@
 namespace ProyectoIds4.Dto;
 
-public class WeatherForecastDto
+public class WeatherForecast
 {
     public DateTime Date { get; set; }
 

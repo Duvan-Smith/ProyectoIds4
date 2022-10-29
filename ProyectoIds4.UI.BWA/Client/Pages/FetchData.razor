@@ -38,11 +38,11 @@ else
 }
 
 @code {
-    private WeatherForecastDto[]? forecasts;
+    private WeatherForecast[]? forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecastDto[]>("WeatherForecastDto");
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
         //TODO: Duvan, Se muestra la Url conexion por consola, agregar al inicio o a un boton.
     }
 }

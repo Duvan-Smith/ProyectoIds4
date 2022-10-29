@@ -4,5 +4,5 @@ namespace ProyectoIds4.UI.BWA.Server.HttpClienteWeatherForecast;
 
 public interface IWeatherForecastClientHttp
 {
-    Task<WeatherForecastDto[]> Get(string? token = null);
+    Task<WeatherForecast[]> Get(string? token = null);
 }

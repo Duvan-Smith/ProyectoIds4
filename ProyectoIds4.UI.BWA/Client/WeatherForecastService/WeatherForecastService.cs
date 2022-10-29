@@ -14,12 +14,12 @@ public class WeatherForecastService : IWeatherForecastService
         _logger = logger;
     }
 
-    public async Task<IEnumerable<WeatherForecastDto>> GetWeatherForecast()
+    public async Task<IEnumerable<WeatherForecast>> GetWeatherForecast()
     {
-        var weatherForecast = await _httpClient.GetFromJsonAsync<WeatherForecastDto[]>("WeatherForecastIds");
+        var weatherForecast = await _httpClient.GetFromJsonAsync<WeatherForecast[]>("WeatherForecastIds");
 
         if (weatherForecast == null)
-            _logger.LogError("Error" + "IEnumerable<WeatherForecastDto> null");
+            _logger.LogError("Error" + "IEnumerable<WeatherForecast> null");
 
         return weatherForecast;
     }

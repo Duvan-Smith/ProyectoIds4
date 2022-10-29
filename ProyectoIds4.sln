@@ -31,8 +31,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.AppCore", "Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.WebApi.Client", "ProyectoIds4.WebApi.Client\ProyectoIds4.WebApi.Client.csproj", "{27DD0F16-4C4B-4445-A84C-373C106567EE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.IdsTempl", "7.IdsTempl", "{20F3B4DB-4AED-4478-BB64-FD3CB0F09131}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.Authentication;
+
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoIds4.AppCore.IdentityServer4;
@@ -26,33 +27,13 @@ public class WeatherForecastIdsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<WeatherForecastDto>> Get()
+    public async Task<IEnumerable<WeatherForecast>> Get()
     {
         var OAuth2Token = await _identityServer4Service.GetToken("weatherApi.read");
 
         var weatherForecast = await _weatherForecastClientHttp.Get(OAuth2Token.AccessToken).ConfigureAwait(false);
         if (weatherForecast == null)
-            _logger.LogError("Error" + "IEnumerable<WeatherForecastDto> null");
-
-        return weatherForecast;
-    }
-
-    [HttpGet(nameof(GetIds))]
-    [Authorize]
-    public async Task<IEnumerable<WeatherForecastDto>> GetIds()
-    {
-        var token = await HttpContext.GetTokenAsync("access_token");
-
-        var weatherForecast = await _weatherForecastClientHttp.Get(token).ConfigureAwait(false);
-        if (weatherForecast == null)
-            _logger.LogError("Error" + "IEnumerable<WeatherForecastDto> null");
-        //using var _client = new HttpClient();
-
-        //var token = await HttpContext.GetTokenAsync("access_token");
-
-        //_client.SetBearerToken(token);
-
-        //var weatherForecast = await _client.GetFromJsonAsync<WeatherForecastDto[]>("weatherforecast");
+            _logger.LogError("Error" + "IEnumerable<WeatherForecast> null");
 
         return weatherForecast;
     }

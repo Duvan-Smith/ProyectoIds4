@@ -4,5 +4,5 @@ namespace ProyectoIds4.UI.BWA.Client.WeatherForecastService;
 
 public interface IWeatherForecastService
 {
-    Task<IEnumerable<WeatherForecastDto>> GetWeatherForecast();
+    Task<IEnumerable<WeatherForecast>> GetWeatherForecast();
 }
