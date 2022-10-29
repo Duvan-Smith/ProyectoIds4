@@ -22,38 +22,13 @@ public static class Clients
                 ClientId = "oidcMVCApp",
                 ClientName = "Sample ASP.NET Core MVC Web App",
                 ClientSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256())},
+
                 AllowedGrantTypes = GrantTypes.Code,
-                AllowAccessTokensViaBrowser = true,
                 RedirectUris = new List<string> {
-                    "https://localhost:7167/",
-                    "https://localhost:7167/signin-oidc"
+                    "https://localhost:7167/index.html",
+                    "https://localhost:7167/signin-oidc",
+                    "https://localhost:7167/oauth2-redirect.html",
                 },
-                PostLogoutRedirectUris = { "https://localhost:7167/signout-callback-oidc" },
-                FrontChannelLogoutUri = "https://localhost:7167/signin-oidc",
-                AllowedScopes = new List<string>
-                {
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.StandardScopes.Email,
-                    "role",
-                    "weatherApi.read"
-                },
-                RequirePkce = true,
-                AllowPlainTextPkce = false
-            },
-            new Client
-            {
-                ClientId = "oidcMVCApp7193",
-                ClientName = "Sample ASP.NET Core MVC Web App",
-                ClientSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256())},
-                AllowedGrantTypes = GrantTypes.Code,
-                AllowAccessTokensViaBrowser = true,
-                RedirectUris = new List<string> {
-                    "https://localhost:7193/",
-                    "https://localhost:7193/signin-oidc"
-                },
-                PostLogoutRedirectUris = { "https://localhost:7193/signout-callback-oidc" },
-                FrontChannelLogoutUri = "https://localhost:7193/signin-oidc",
                 AllowedScopes = new List<string>
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
