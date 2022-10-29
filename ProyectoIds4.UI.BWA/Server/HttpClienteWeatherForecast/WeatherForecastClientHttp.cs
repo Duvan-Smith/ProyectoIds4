@@ -1,4 +1,5 @@
-﻿using ProyectoIds4.Dto;
+﻿using Newtonsoft.Json;
+using ProyectoIds4.Dto;
 using System.Net.Http.Headers;
 
 namespace ProyectoIds4.UI.BWA.Server.HttpClienteWeatherForecast;
@@ -20,15 +21,15 @@ public class WeatherForecastClientHttp : IWeatherForecastClientHttp
         WeatherForecast[]? forecasts;
         try
         {
-            forecasts = await _client.GetFromJsonAsync<WeatherForecast[]>("weatherforecast");
-            return forecasts;
+            //forecasts = await _client.GetFromJsonAsync<WeatherForecast[]>("weatherforecast");
+            //return forecasts;
+            var response = await _client.GetAsync("weatherforecast").ConfigureAwait(false);
+            return JsonConvert.DeserializeObject<WeatherForecast[]>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
         }
         return null;
-        //var response = await _client.GetAsync("weatherforecast").ConfigureAwait(false);
-        //return JsonConvert.DeserializeObject<IEnumerable<WeatherForecast>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
     }
 }
