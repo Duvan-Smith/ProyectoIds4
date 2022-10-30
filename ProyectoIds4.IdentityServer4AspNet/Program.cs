@@ -1,25 +1,68 @@
+using IdentityServer4;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using ProyectoIds4.IdentityServer4AspNet;
+using ProyectoIds4.IdentityServer4AspNet.Data;
+using ProyectoIds4.IdentityServer4AspNet.Models;
+
+string MiCors = "MiCords";
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddCors(options => options.AddPolicy(name: MiCors, builder =>
+    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
+#region Auth
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+var builderIds = builder.Services.AddIdentityServer(options =>
+{
+    options.Events.RaiseErrorEvents = true;
+    options.Events.RaiseInformationEvents = true;
+    options.Events.RaiseFailureEvents = true;
+    options.Events.RaiseSuccessEvents = true;
+
+    // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
+    options.EmitStaticAudienceClaim = true;
+})
+    .AddInMemoryIdentityResources(Config.IdentityResources)
+    .AddInMemoryApiScopes(Config.ApiScopes)
+    .AddInMemoryClients(Config.Clients)
+    .AddAspNetIdentity<ApplicationUser>();
+
+// not recommended for production - you need to store your key material somewhere secure
+builderIds.AddDeveloperSigningCredential();
+
+builder.Services.AddAuthentication()
+    .AddGoogle(options =>
+    {
+        options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+        // register your IdentityServer with Google at https://console.developers.google.com
+        // enable the Google+ API
+        // set the redirect URI to https://localhost:5001/signin-google
+        options.ClientId = "copy client ID from Google here";
+        options.ClientSecret = "copy client secret from Google here";
+    });
+#endregion Auth
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    app.UseDeveloperExceptionPage();
 }
-
-app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
+app.UseIdentityServer();
 app.UseAuthorization();
-
-app.MapRazorPages();
+app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
+app.UseCors(MiCors);
 
 app.Run();
