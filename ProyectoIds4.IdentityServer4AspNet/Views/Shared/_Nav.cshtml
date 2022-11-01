@@ -20,8 +20,12 @@
         {
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>
-                    
+                    @*<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>*@
+                    <a href="~/" class="navbar-brand">
+                        @name
+                    </a>
+                     <a asp-action="Logout" asp-controller="Account">Logout</a>
+
                     <div class="dropdown-menu">
                         <a class="dropdown-item" asp-action="Logout" asp-controller="Account">Logout</a>
                     </div>
