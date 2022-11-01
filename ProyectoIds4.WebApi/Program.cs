@@ -43,7 +43,7 @@ builder.Services.AddSwaggerGen(swa =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 .AddJwtBearer(opt =>
 {
-    opt.Authority = "https://localhost:7164";
+    opt.Authority = "https://localhost:7132";
     opt.Audience = "weatherApi";
     opt.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
 });

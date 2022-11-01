@@ -13,7 +13,7 @@ builder.Services.AddAuthentication(options =>
     .AddCookie("cookie")
     .AddOpenIdConnect("oidc", options =>
     {
-        options.Authority = "https://localhost:7164";
+        options.Authority = "https://localhost:7132";
         options.ClientId = "oidcMVCApp";
         options.ClientSecret = "ProCodeGuide";
         options.ResponseType = "code";

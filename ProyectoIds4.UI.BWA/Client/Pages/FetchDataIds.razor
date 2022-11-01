@@ -3,8 +3,6 @@
 <PageTitle>Weather forecast</PageTitle>
 
 @using ProyectoIds4.Dto
-@*@using ProyectoIds4.UI.BWA.Client.WeatherForecastService*@
-@*@inject IWeatherForecastService ForecastService*@
 @inject HttpClient Http
 
 <h1>Weather forecast</h1>
@@ -45,8 +43,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        //forecasts = await ForecastService.GetWeatherForecast();
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecastIds");
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecastIds/GetIds");
         //TODO: Duvan, Se muestra la Url conexion por consola, agregar al inicio o a un boton.
     }
 }
