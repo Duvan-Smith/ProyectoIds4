@@ -21,6 +21,7 @@ builder.Services.AddAuthentication(options =>
         options.ResponseMode = "query";
         options.Scope.Add("weatherApi.read");
         options.SaveTokens = true;
+        options.SignedOutRedirectUri = "https://localhost:7167/signin-oidc-callback";
     });
 
 builder.Services.AddControllersWithViews();
