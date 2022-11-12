@@ -16,6 +16,7 @@ builder.Services.AddAuthentication(options =>
         options.Authority = "https://localhost:7132";
         options.ClientId = "oidcMVCApp";
         options.ClientSecret = "ProCodeGuide";
+        //options.ClientSecret = "ProCodeGuide".ToSha256();
         options.ResponseType = "code";
         options.UsePkce = true;
         options.ResponseMode = "query";

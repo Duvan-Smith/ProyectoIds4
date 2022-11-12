@@ -91,9 +91,14 @@ public static class Config
 
                 RedirectUris = {
                     "https://localhost:7167/signin-oidc",
+                    "https://localhost:7167",
                     "https://localhost:3000/signin-oidc",
                     "https://localhost:7015/signin-oidc",
                     "https://localhost:7132/signin-oidc",
+                    "https://localhost:7180/signin-oidc",
+                    "https://localhost:7180",
+                    "https://localhost:44391/signin-oidc",
+                    "https://localhost:44391",
                 },
                 //FrontChannelLogoutUri = "https://localhost:7167/signout-oidc",
                 PostLogoutRedirectUris = {
@@ -101,6 +106,8 @@ public static class Config
                     "https://localhost:3000/signout-callback-oidc",
                     "https://localhost:7015/signout-callback-oidc",
                     "https://localhost:7132/signout-callback-oidc",
+                    "https://localhost:7180/signout-callback-oidc",
+                    "https://localhost:44391/signout-callback-oidc",
                 },
 
                 AllowedScopes = new List<string>
