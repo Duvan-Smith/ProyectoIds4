@@ -71,4 +71,15 @@ app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 
 app.UseCors(MiCors);
 
+using var services = app.Services.CreateScope();
+var dbContext = services.ServiceProvider.GetService<ApplicationDbContext>();
+try
+{
+    dbContext?.Database.Migrate();
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.ToString());
+}
+
 app.Run();
