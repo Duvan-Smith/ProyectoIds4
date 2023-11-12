@@ -1,4 +1,5 @@
 ﻿using Cliente.Models;
+using Cliente.Services;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -12,10 +13,12 @@ namespace Cliente.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ITokenService _tokenService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,ITokenService tokenService)
         {
             _logger = logger;
+            _tokenService = tokenService;
         }
 
         public IActionResult Index()
@@ -49,6 +52,20 @@ namespace Cliente.Controllers
                 return Ok(response);
             }
             throw new Exception("Error");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> GetToken()
+        {
+            var result = await _tokenService.GetToken("weatherApi.read");
+            return Ok(result);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> GetTokenHttpContext()
+        {
+            var token = await HttpContext.GetTokenAsync("access_token");
+            return Ok(token);
         }
     }
 }

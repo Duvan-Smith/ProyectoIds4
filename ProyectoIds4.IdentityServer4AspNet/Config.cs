@@ -76,7 +76,7 @@ public static class Config
                 ClientId = "weatherApi",
                 ClientName = "ASP.NET Core Weather Api",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                ClientSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256())},
+                ClientSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256()),new Secret("weatherApiProCodeGuide123456789987654321") },
                 AllowedScopes = new List<string> {"weatherApi.read"}
             },
 

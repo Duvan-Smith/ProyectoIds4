@@ -10,8 +10,8 @@ public class TokenService : ITokenService
         var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
         {
             Address = "https://localhost:7132/connect/token",
-            ClientId = "oidcMVCApp",
-            ClientSecret = "ProCodeGuide",
+            ClientId = "weatherApi",
+            ClientSecret = "weatherApiProCodeGuide123456789987654321",
             Scope = scope
         });
         if (tokenResponse.IsError)
