@@ -1,9 +1,13 @@
 using ProyectoIds4.AppCore.Base.Cofiguration;
 using ProyectoIds4.UI.BWA.Server.HttpClienteWeatherForecast;
 
+string MiCors = "MiCords";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options => options.AddPolicy(name: MiCors, builder =>
+    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
 builder.Services.AddAuthentication(options =>
 {
@@ -20,6 +24,10 @@ builder.Services.AddAuthentication(options =>
         options.ResponseType = "code";
         options.UsePkce = true;
         options.ResponseMode = "query";
+        options.Scope.Add("openid");
+        options.Scope.Add("profile");
+        options.Scope.Add("email");
+        options.Scope.Add("role");
         options.Scope.Add("weatherApi.read");
         options.SaveTokens = true;
         options.SignedOutRedirectUri = "https://localhost:7167/signin-oidc-callback";
@@ -48,6 +56,8 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseCors(MiCors);
 
 app.UseHttpsRedirection();
 

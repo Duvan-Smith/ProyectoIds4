@@ -99,14 +99,29 @@ public class WeatherForecastIdsController : ControllerBase
         //var weatherForecast = await _weatherForecastClientHttp.Get(token).ConfigureAwait(false);
         //if (weatherForecast == null)
         //    _logger.LogError("Error" + "IEnumerable<WeatherForecastDto> null");
+        //using var _client = new HttpClient(new HttpClientHandler() { AllowAutoRedirect = true });
         using var _client = new HttpClient();
 
         var token = await HttpContext.GetTokenAsync("access_token");
-
         _client.SetBearerToken(token);
+
+        //_client.DefaultRequestHeaders.Add("Access-Control-Allow-Origin", "*");
+        //_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
         var weatherForecast = await _client.GetFromJsonAsync<WeatherForecast[]>("https://localhost:7245/weatherforecast");
 
+        //var response = await _client.GetAsync("https://localhost:7245/weatherforecast");
+
+        //if (response.StatusCode == HttpStatusCode.Redirect || response.StatusCode == HttpStatusCode.Found)
+        //{
+        //    // Obtén la nueva URL desde el encabezado Location
+        //    var newUrl = response.Headers.Location.AbsoluteUri;
+
+        //    // Realiza una nueva solicitud a la nueva URL
+        //    response = await _client.GetAsync(newUrl);
+        //}
+
+        //return new List<WeatherForecast>();
         return weatherForecast;
     }
 }

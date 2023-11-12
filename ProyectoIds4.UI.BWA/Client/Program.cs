@@ -5,6 +5,7 @@ using ProyectoIds4.UI.BWA.Client;
 using ProyectoIds4.UI.BWA.Client.WeatherForecastService;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 

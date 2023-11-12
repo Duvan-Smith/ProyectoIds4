@@ -28,7 +28,8 @@ public static class Config
                 Description = "Allow the application to access Weather Api on your behalf",
                 Scopes = new List<string> { "weatherApi.read", "weatherApi.write"},
                 ApiSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256())},
-                UserClaims = new List<string> {"role"}
+                UserClaims = new List<string> {"role"},
+                //AllowedAccessTokenSigningAlgorithms = { "https://localhost:7167" }
             }
         };
 
@@ -88,26 +89,55 @@ public static class Config
                 ClientSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256())},
                 AllowedGrantTypes = GrantTypes.Code,
                 AllowAccessTokensViaBrowser = true,
+                RequirePkce = true,
+                AllowPlainTextPkce = false,
+                AllowOfflineAccess=true,
+
+                AllowedCorsOrigins =
+                {
+                    "https://oauth.pstmn.io",
+                    "https://localhost:7167",
+                    "https://localhost:44355",
+                    "https://localhost:51943",
+                    //"https://localhost:7167/signin-oidc",
+                    //"https://localhost:7167/authorize",
+                    //"https://localhost:7167/connect/authorize",
+                    //"https://localhost:7015/",
+                },
 
                 RedirectUris = {
+                    "https://oauth.pstmn.io/v1/callback",
+                    "https://localhost:7167/",
                     "https://localhost:7167/signin-oidc",
-                    "https://localhost:7167",
-                    "https://localhost:3000/signin-oidc",
-                    "https://localhost:7015/signin-oidc",
-                    "https://localhost:7132/signin-oidc",
-                    "https://localhost:7180/signin-oidc",
-                    "https://localhost:7180",
-                    "https://localhost:44391/signin-oidc",
-                    "https://localhost:44391",
+                    "https://localhost:7167/authorize",
+                    "https://localhost:7167/connect/authorize",
+                    "https://localhost:44355/",
+                    "https://localhost:51943/",
+                    //"https://localhost:3000/signin-oidc",
+                    //"https://localhost:7015/",
+                    //"https://localhost:7015/signin-oidc",
+                    //"https://localhost:7132/signin-oidc",
+                    //"https://localhost:7180/signin-oidc",
+                    //"https://localhost:7180",
+                    //"https://localhost:44391/signin-oidc",
+                    //"https://localhost:44391",
                 },
-                //FrontChannelLogoutUri = "https://localhost:7167/signout-oidc",
+                FrontChannelLogoutUri = "https://localhost:7167/signout-oidc",
+                BackChannelLogoutUri = "https://localhost:7167/signout-callback-oidc",
+
+                //FrontChannelLogoutUri = "https://localhost:7015/signout-oidc",
+                //BackChannelLogoutUri = "https://localhost:7015/",
                 PostLogoutRedirectUris = {
+                    "https://localhost:7167/",
                     "https://localhost:7167/signout-callback-oidc",
-                    "https://localhost:3000/signout-callback-oidc",
-                    "https://localhost:7015/signout-callback-oidc",
-                    "https://localhost:7132/signout-callback-oidc",
-                    "https://localhost:7180/signout-callback-oidc",
-                    "https://localhost:44391/signout-callback-oidc",
+                    "https://localhost:44355/",
+                    "https://localhost:51943/",
+                    //"https://localhost:3000/signout-callback-oidc",
+                    //"https://localhost:7015/",
+                    //"https://localhost:7015/signout-callback-oidc",
+                    //"https://localhost:7132/signout-callback-oidc",
+                    //"https://localhost:7180/signout-callback-oidc",
+                    //"https://localhost:44391/signout-callback-oidc",
                 },
 
                 AllowedScopes = new List<string>
@@ -118,8 +148,6 @@ public static class Config
                     "role",
                     "weatherApi.read"
                 },
-                RequirePkce = true,
-                AllowPlainTextPkce = false
             },
 
             new Client

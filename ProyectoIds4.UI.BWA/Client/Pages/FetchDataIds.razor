@@ -2,12 +2,15 @@
 
 <PageTitle>Weather forecast</PageTitle>
 
+@using Newtonsoft.Json;
 @using ProyectoIds4.Dto
 @inject HttpClient Http
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
+
+<button @onclick=Cargar>Cargar</button>
 
 @if (forecasts == null)
 {
@@ -43,7 +46,46 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecastIds/GetIds");
+        // Http.DefaultRequestHeaders.Add("access-control-allow-origin", "*");
+        // Http.DefaultRequestHeaders.Add("Access-Control-Allow-Origin", "*");
+        // Http.DefaultRequestHeaders.Add("Origin", "https://localhost:7167");
+        // Http.DefaultRequestHeaders.Add("origin", "https://localhost:7167");
+        // Http.DefaultRequestHeaders.Add("origin", "https://localhost:7132");
+        // forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecastIds/GetIds");
+        // try
+        // {
+        //     forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecastIds/GetIds");
+        //     // Resto del código para manejar los datos
+        // }
+        // catch (JsonException ex)
+        // {
+        //     // Manejo de errores de deserialización JSON
+        //     Console.WriteLine($"Error al deserializar JSON: {ex.Message}");
+        // }
+        // catch (HttpRequestException ex)
+        // {
+        //     // Manejo de errores de solicitud HTTP
+        //     Console.WriteLine($"Error en la solicitud HTTP: {ex.Message}");
+        // }
         //TODO: Duvan, Se muestra la Url conexion por consola, agregar al inicio o a un boton.
+    }
+
+    protected async Task Cargar()
+    {
+        try
+        {
+            forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecastIds/GetIds");
+            // Resto del código para manejar los datos
+        }
+        catch (JsonException ex)
+        {
+            // Manejo de errores de deserialización JSON
+            Console.WriteLine($"Error al deserializar JSON: {ex.Message}");
+        }
+        catch (HttpRequestException ex)
+        {
+            // Manejo de errores de solicitud HTTP
+            Console.WriteLine($"Error en la solicitud HTTP: {ex.Message}");
+        }
     }
 }

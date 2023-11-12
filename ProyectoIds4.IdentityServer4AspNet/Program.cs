@@ -61,6 +61,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
+
+app.UseCors(MiCors);
+
 app.UseIdentityServer();
 app.UseStaticFiles();
 app.UseRouting();
@@ -69,7 +72,7 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints => endpoints.MapDefaultControllerRoute());
 //app.MapRazorPages().RequireAuthorization();
 
-app.UseCors(MiCors);
+//app.UseCors(MiCors);
 
 using var services = app.Services.CreateScope();
 var dbContext = services.ServiceProvider.GetService<ApplicationDbContext>();
