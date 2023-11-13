@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using ProyectoIds4.Cliente.BS.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +22,7 @@ builder.Services.AddAuthentication(options =>
         options.Authority = "https://localhost:7132";
         options.ClientId = "oidcMVCApp";
         options.ClientSecret = "ProCodeGuide";
-        options.CallbackPath = "/";
+        options.CallbackPath = "/signin-oidc";
         options.ResponseType = "code";
         options.SaveTokens = true;
         options.Scope.Add("openid");
@@ -31,8 +32,25 @@ builder.Services.AddAuthentication(options =>
         options.SignedOutRedirectUri = "https://localhost:7167/signin-oidc-callback";
         options.TokenValidationParameters.ValidateIssuer = false;
         options.TokenValidationParameters.NameClaimType = "name";
+
+        options.Events = new OpenIdConnectEvents
+        {
+            OnRemoteFailure = context =>
+            {
+                context.Response.Redirect("/Account/Login");
+                context.HandleResponse();
+                return Task.CompletedTask;
+            }
+        };
     });
 
+//builder.Services.AddMvcCore(options =>
+//{
+//    var policy = new AuthorizationPolicyBuilder()
+//        .RequireAuthenticatedUser() // site-wide auth
+//        .Build();
+//    options.Filters.Add(new AuthorizeFilter(policy));
+//});
 
 var app = builder.Build();
 

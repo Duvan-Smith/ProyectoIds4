@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cliente", "Cliente\Cliente.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds.Cliente.BWA", "ProyectoIds.Cliente.BWA\ProyectoIds.Cliente.BWA.csproj", "{D02BC348-0FA8-4A68-8016-0C172786D81E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoIds4.Cliente.BS", "ProyectoIds4.Cliente.BS\ProyectoIds4.Cliente.BS.csproj", "{B48529CF-C632-4809-9302-531E1D663A73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProyectoIds4.Cliente.BS", "ProyectoIds4.Cliente.BS\ProyectoIds4.Cliente.BS.csproj", "{B48529CF-C632-4809-9302-531E1D663A73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

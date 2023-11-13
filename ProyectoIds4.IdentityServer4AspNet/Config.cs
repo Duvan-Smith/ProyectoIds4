@@ -152,6 +152,52 @@ public static class Config
 
             new Client
             {
+                ClientId = "oidcMVCAppR",
+                ClientName = "Sample ASP.NET Core MVC Web App",
+                //ClientSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256())},
+                AllowedGrantTypes = GrantTypes.Code,
+                AllowAccessTokensViaBrowser = true,
+                RequirePkce = true,
+                AllowPlainTextPkce = false,
+                AllowOfflineAccess = true,
+                AccessTokenType = AccessTokenType.Jwt,
+                RequireClientSecret = false,
+
+                //ClientUri = "https://localhost:3000",
+
+                AllowedCorsOrigins =
+                {
+                    "https://oauth.pstmn.io",
+                    "https://localhost:3000",
+                },
+
+                RedirectUris = {
+                    "https://oauth.pstmn.io/v1/callback",
+                    "https://localhost:3000/signin-oidc",
+                    "https://localhost:3000/login-oidc-callback",
+                    "https://localhost:3000",
+                },
+
+                FrontChannelLogoutUri = "https://localhost:3000/signout-oidc",
+                BackChannelLogoutUri = "https://localhost:3000/",
+
+                PostLogoutRedirectUris = {
+                    "https://localhost:3000/signout-oidc",
+                    "https://localhost:3000/logout-callback",
+                },
+
+                AllowedScopes = new List<string>
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.StandardScopes.Email,
+                    "role",
+                    "weatherApi.read"
+                },
+            },
+
+            new Client
+            {
                 ClientId = "oidcMVCApp7193",
                 ClientName = "Sample ASP.NET Core MVC Web App",
                 ClientSecrets = new List<Secret> {new Secret("ProCodeGuide".Sha256())},
