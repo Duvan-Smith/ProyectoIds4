@@ -2,7 +2,6 @@ import { UserManager } from 'oidc-client';
 import { storeUserError, storeUser } from '../actions/authActions'
 
 const authApiUrl = 'https://localhost:7132'
-// const authApiUrl = 'https://localhost:44370'
 
 const config = {
   authority: authApiUrl,
@@ -10,7 +9,7 @@ const config = {
   redirect_uri: "https://localhost:3000/signin-oidc",
   response_type: "code",
   scope: "openid profile email role weatherApi.read",
-  post_logout_redirect_uri: "https://localhost:3000/signout-oidc",
+  post_logout_redirect_uri: "https://localhost:3000/",
 };
 
 const userManager = new UserManager(config)

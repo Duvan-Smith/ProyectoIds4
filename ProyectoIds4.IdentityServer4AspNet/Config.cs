@@ -81,7 +81,7 @@ public static class Config
                 AllowedScopes = new List<string> {"weatherApi.read"}
             },
 
-            //BWA Client
+            //BS Client
             new Client
             {
                 ClientId = "oidcMVCApp",
@@ -96,48 +96,19 @@ public static class Config
                 AllowedCorsOrigins =
                 {
                     "https://oauth.pstmn.io",
-                    "https://localhost:7167",
-                    "https://localhost:44355",
-                    "https://localhost:51943",
-                    //"https://localhost:7167/signin-oidc",
-                    //"https://localhost:7167/authorize",
-                    //"https://localhost:7167/connect/authorize",
-                    //"https://localhost:7015/",
+                    "https://localhost:5005",
                 },
 
                 RedirectUris = {
                     "https://oauth.pstmn.io/v1/callback",
-                    "https://localhost:7167/",
-                    "https://localhost:7167/signin-oidc",
-                    "https://localhost:7167/authorize",
-                    "https://localhost:7167/connect/authorize",
-                    "https://localhost:44355/",
-                    "https://localhost:51943/",
-                    //"https://localhost:3000/signin-oidc",
-                    //"https://localhost:7015/",
-                    //"https://localhost:7015/signin-oidc",
-                    //"https://localhost:7132/signin-oidc",
-                    //"https://localhost:7180/signin-oidc",
-                    //"https://localhost:7180",
-                    //"https://localhost:44391/signin-oidc",
-                    //"https://localhost:44391",
+                    "https://localhost:5005/",
+                    "https://localhost:5005/signin-callback-oidc",
                 },
-                FrontChannelLogoutUri = "https://localhost:7167/signout-oidc",
-                BackChannelLogoutUri = "https://localhost:7167/signout-callback-oidc",
 
-                //FrontChannelLogoutUri = "https://localhost:7015/signout-oidc",
-                //BackChannelLogoutUri = "https://localhost:7015/",
+                BackChannelLogoutUri = "https://localhost:5005/",
+
                 PostLogoutRedirectUris = {
-                    "https://localhost:7167/",
-                    "https://localhost:7167/signout-callback-oidc",
-                    "https://localhost:44355/",
-                    "https://localhost:51943/",
-                    //"https://localhost:3000/signout-callback-oidc",
-                    //"https://localhost:7015/",
-                    //"https://localhost:7015/signout-callback-oidc",
-                    //"https://localhost:7132/signout-callback-oidc",
-                    //"https://localhost:7180/signout-callback-oidc",
-                    //"https://localhost:44391/signout-callback-oidc",
+                    "https://localhost:5005/",
                 },
 
                 AllowedScopes = new List<string>
@@ -150,6 +121,7 @@ public static class Config
                 },
             },
 
+            //RJ Client
             new Client
             {
                 ClientId = "oidcMVCAppR",

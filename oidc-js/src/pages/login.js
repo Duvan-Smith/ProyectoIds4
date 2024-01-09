@@ -16,8 +16,8 @@ function Login() {
       :
       (
         <div>
-          <h1>Hello!</h1>
-          <p>A demo of using React and Identity Server 4 to authenticate a user via OpenID Connect to gain access to a web API.</p>
+          <h1>Hola!</h1>
+          <p>Inicia en Ids</p>
           <button onClick={() => login()}>Login</button>
         </div>
       )
