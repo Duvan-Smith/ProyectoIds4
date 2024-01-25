@@ -1,7 +1,10 @@
 using IdentityServer4;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ProyectoIds4.IdentityServer4AspNet;
+using ProyectoIds4.IdentityServer4AspNet.Configs.Api;
+using ProyectoIds4.IdentityServer4AspNet.Configs.Clients;
+using ProyectoIds4.IdentityServer4AspNet.Configs.Identity;
+using ProyectoIds4.IdentityServer4AspNet.Configs.Scopes;
 using ProyectoIds4.IdentityServer4AspNet.Data;
 using ProyectoIds4.IdentityServer4AspNet.Models;
 
@@ -33,10 +36,15 @@ var builderIds = builder.Services.AddIdentityServer(options =>
     // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
     options.EmitStaticAudienceClaim = true;
 })
-    .AddInMemoryIdentityResources(Config.IdentityResources)
-    .AddInMemoryApiResources(Config.ApiResources)
-    .AddInMemoryApiScopes(Config.ApiScopes)
-    .AddInMemoryClients(Config.Clients)
+    //.AddInMemoryIdentityResources(Config.IdentityResources)
+    //.AddInMemoryApiResources(Config.ApiResources)
+    //.AddInMemoryApiScopes(Config.ApiScopes)
+    //.AddInMemoryClients(Config.Clients)
+    //.AddAspNetIdentity<ApplicationUser>();
+    .AddInMemoryIdentityResources(IdentityResourcesHelper.GetIdentityResources())
+    .AddInMemoryApiResources(ApiResourcesHelper.GetApiResources())
+    .AddInMemoryApiScopes(ScopesHelper.GetApiScopes())
+    .AddInMemoryClients(ClientsHelper.GetClients())
     .AddAspNetIdentity<ApplicationUser>();
 
 // not recommended for production - you need to store your key material somewhere secure

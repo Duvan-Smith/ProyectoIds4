@@ -1,14 +1,15 @@
 import { UserManager } from 'oidc-client';
 import { storeUserError, storeUser } from '../actions/authActions'
 
-const authApiUrl = 'https://localhost:7132'
+// const authApiUrl = 'https://localhost:7132'
+const authApiUrl = 'https://localhost:7068'
 
 const config = {
   authority: authApiUrl,
   client_id: "oidcMVCAppR",
   redirect_uri: "https://localhost:3000/signin-oidc",
   response_type: "code",
-  scope: "openid profile email role weatherApi.read",
+  scope: "openid profile email role weatherApi.read BlobStorage.Api",
   post_logout_redirect_uri: "https://localhost:3000/",
 };
 
